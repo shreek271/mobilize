@@ -1,0 +1,41 @@
+.mobilize {
+	background: image-url('banner.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 50vh;
+	width: 100%;
+	text-align: center;
+}
+
+.mobilize-heading {
+	color: #fff;
+	margin-top: 100px;
+	font-size: 37px;
+	font-weight: 600;
+}
+
+.mobilize-heading p {
+	font-weight: 400;
+	font-size: 24px;
+}
+
+.transparent-background{
+  height: 100%;
+  width: 100%;
+  background: rgba(51,51,51,0.7);
+}
+
+.margin-right-zero{
+	margin-right: 0px !important;
+}
+
+.mobilize-card {
+	background-color: #fff;
+	width: 228px;
+	height: 275px;
+	border: 1px #e5e5e5 solid;
+	margin: 0 auto 20px auto;
+	padding: 0;
+}

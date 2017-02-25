@@ -1,0 +1,36 @@
+.mobilize
+  .transparent-background
+    .row.margin-right-zero
+      .mobilize-heading
+        The Best Mobile Sellers
+        %br/
+        Available on Mobilize.
+        %p Browse. Buy. Done
+    .row.margin-right-zero
+      .col-md-offset-3.col-md-6
+        %form{:action => ""}
+          .input-group.input-group-lg
+            %input.form-control{:placeholder => "What are you looking for...", :type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"}
+                Find
+.container.section
+  %h2
+    Latest Arrivals
+  .row.text-center
+    .col-md-3
+      .mobilize-card.thumbnail
+        = image_tag "mobile1.jpg", class: "img-responsive", style: "height: 175px"
+        %h5 OPPO
+        %h4 Rs 15000
+    .col-md-3
+      .mobilize-card.thumbnail
+        = image_tag "mobile2.png", class: "img-responsive", style: "height: 175px"
+        %h5 SAMSUNG
+        %h4 Rs 25000
+    .col-md-3
+      .mobilize-card.thumbnail
+        = image_tag "mobile3.jpg", class: "img-responsive", style: "height: 175px"
+        %h5 SONY
+        %h4 Rs 10000
+

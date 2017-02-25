@@ -7,11 +7,36 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/*.sql
+
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
+/tmp
 
-# Ignore Byebug command history file.
-.byebug_history
+# Ignore Spring files.
+/spring/*.pid
+
+# Ignore uploaded test images.
+/public/uploads
+/public/system
+/public/assets
+/public/ckeditor_assets
+
+#Ignore the database and secrets.yml files
+config/database.yml
+config/secrets.yml
+
+#other files
+._.DS_Store
+._Gemfile
+.tm_properties
+dump.rdb
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+/.byebug_history
