@@ -5,11 +5,7 @@
     = render 'dashboard/brand_form'
         
   .col-md-6
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title.text-center Create Product
-      .panel-body#products-tab
-        = render 'products/form'
+    = render 'products/form'
 
   .col-md-3#product-types-tab
     = render "dashboard/type_form"

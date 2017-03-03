@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
 
   def create
     Product.create(products_params)
-    @Product = Product.new
+    @product = Product.new
     respond_to do |format|
-      format.html
+      format.html{ render(:text => "not implemented") }
       format.js
     end
   end
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   private
 
   def products_params
-  	params.require(:product).permit(:name, :price, :quantity, :model, :color, :brand_id, :type_id)
+  	params.require(:product).permit(:name, :price, :quantity, :model, :color, :brand_id, :type_id, :image)
   end
 
 end

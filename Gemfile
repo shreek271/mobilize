@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'font-awesome-rails'
 gem 'bootstrap-select-rails'
+gem 'remotipart'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
