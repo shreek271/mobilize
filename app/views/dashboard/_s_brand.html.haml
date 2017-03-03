@@ -1,0 +1,8 @@
+= form_for(@brand, remote:true, html: {class: "form-horizontal" }) do |f|
+  = f.text_field :name, class: "form-control input-sm note-group", placeholder:"eg. Samsung, Micromax..."
+  %br
+  = f.submit  class: 'btn btn-xs btn-success', data: {disable_with: "Please wait..." }
+  - if !f.object.new_record?
+    = link_to 'cancel', "" ,class: 'btn btn-xs btn-success'
+    %br
+    %br

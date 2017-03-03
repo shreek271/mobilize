@@ -1,0 +1,34 @@
+= form_for(@product, remote:true, html: {class: "form-horizontal" }) do |f|
+  .row
+    .col-md-6
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    .col-md-6
+      = f.label :model
+      = f.text_field :model, class: 'form-control'
+  %br	  
+  .row
+    .col-md-6
+      = f.label :brand
+      = f.collection_select(:brand_id, Brand.all, :id, :name, {}, {class: "selectpicker form-control"})
+    .col-md-6
+      = f.label :type
+      = f.collection_select(:type_id, Type.all, :id, :name, {}, {class: "selectpicker form-control"})
+  %br
+  .row
+    .col-md-6
+      = f.label :price
+      = f.number_field :price, class: "form-control"
+    .col-md-6
+      = f.label :quantity
+      = f.number_field :quantity, class: "form-control"
+  %br
+  .row
+    .col-md-6
+      = f.label :color
+      = f.text_field :color, class: "form-control"
+    .col-md-6
+      = f.label :image
+      = f.file_field :image, class: "form-control"
+  %br/
+  = f.submit  class: 'btn btn-xs btn-success', data: {disable_with: "Please wait..." }

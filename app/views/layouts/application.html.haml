@@ -7,10 +7,11 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render 'shared/navbar'
-    - flash.each do |message_type, message|
-      - unless message.blank?
-        %div{class: "super-alert alert #{flash_class(message_type)}"}
-          %a.close{"aria-label" => "close", "data-dismiss" => "alert", href: "#", title: "close"} ×
-          = message
-    = yield
+    .app-container
+      = render 'layouts/header'
+      - flash.each do |message_type, message|
+        - unless message.blank?
+          %div{class: "super-alert alert #{flash_class(message_type)}"}
+            %a.close{"aria-label" => "close", "data-dismiss" => "alert", href: "#", title: "close"} ×
+            = message
+      = yield

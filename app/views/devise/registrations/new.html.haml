@@ -1,9 +1,9 @@
-.container-fluid.signup-page
+.form-page{style: 'height: 105vh;'}
   .transparent-background
     .col-md-4
     .col-md-4{style: 'padding: 70px 15px'}
       .panel.panel-default.devise-bs
-        .panel-heading{style: 'background:#353d47; color: white;'}
+        .panel-heading.text-center{style: 'background:#353d47; color: white;'}
           %h4
             = "Sign up"
         .panel-body
@@ -26,6 +26,7 @@
               = f.password_field :password_confirmation, class: "form-control"
             %br
             = f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary"
-      = render "devise/shared/links"
+          %br
+          = render "devise/shared/links"
     .col-md-4.sign-up-side-image.text-center
     
