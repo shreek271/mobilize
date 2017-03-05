@@ -1,0 +1,75 @@
+.row.zero-margin
+  %br
+  .col-md-6
+    /%span#brand-name= @brand.name
+    - @brands.each do |brand|
+      - magic_class = brand == @brand ? 'btn selected-button' : 'btn btn-default'
+      = link_to brand.name.upcase, brand_path(brand), class: magic_class
+    = link_to 'ALL', brands_path, class: 'btn btn-default'
+%br
+.row.zero-margin
+  .product-items-tab
+    .bs-example.bs-example-tabs{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+      - if @brand.types.present?
+        %ul#myTab.nav.nav-tabs{:role => "tablist"}
+          - @brand.types.distinct.each do |type|
+            %li.active{:role => "presentation"}
+              %a#home-tab{"aria-controls" => "home", "data-toggle" => "tab", :href => "##{type.name}", :role => "tab"}= type.name
+        #myTabContent.tab-content
+          - type1 =  @brand.types.first
+          .tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type1.name}"}
+            .brand_tabs
+              - @brand.products.where("type_id = (?)", type1.id).each do |item|
+                .col-md-3.brand-item-box
+                  .hs-wrapper
+                    = image_tag item.image.url, class: "img-responsive", style: "height:250px; width:220px;"
+                    = image_tag "mobile1.jpg", class: "img-responsive", style: "height:250px; width:220px;"
+                    .w3_hs_bottom
+                      %ul
+                        %li
+                          %a{"data-target" => "#myModal", "data-toggle" => "modal", :href => "#"}
+                            %span.glyphicon.glyphicon-eye-open{"aria-hidden" => "true"}
+                  %h5
+                    %a{:href => "single.html"}=item.name
+                  .simpleCart_shelfItem
+                    %p
+                      %span= "RS.#{item.price}"
+                      %i.item_price= "Rs.#{item.price - 20}"
+                    %form{:action => "#", :method => "post"}
+                      %input{:name => "cmd", :type => "hidden", :value => "_cart"}/
+                      %input{:name => "add", :type => "hidden", :value => "1"}/
+                      %input{:name => "w3ls_item", :type => "hidden", :value => "Mobile Phone1"}/
+                      %input{:name => "amount", :type => "hidden", :value => "350.00"}/
+                      %button.w3ls-cart{:type => "submit"} Order Now
+              .clearfix
+          - @brand.types.distinct.drop(1).each do |type|
+            .tab-pane.fade{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type.name}"}
+              .brand_tabs
+                - @brand.products.where("type_id = (?)", type.id).each do |item|
+                  .col-md-3.brand-item-box
+                    .hs-wrapper
+                      = image_tag item.image.url, class: "img-responsive"
+                      .w3_hs_bottom
+                        %ul
+                          %li
+                            %a{"data-target" => "#myModal", "data-toggle" => "modal", :href => "#"}
+                              %span.glyphicon.glyphicon-eye-open{"aria-hidden" => "true"}
+                    %h5
+                      %a{:href => "single.html"}=item.name
+                    .simpleCart_shelfItem
+                      %p
+                        %span= item.price
+                        %i.item_price= item.price - 20
+                      %form{:action => "#", :method => "post"}
+                        %input{:name => "cmd", :type => "hidden", :value => "_cart"}/
+                        %input{:name => "add", :type => "hidden", :value => "1"}/
+                        %input{:name => "w3ls_item", :type => "hidden", :value => "Mobile Phone1"}/
+                        %input{:name => "amount", :type => "hidden", :value => "350.00"}/
+                        %button.w3ls-cart{:type => "submit"} Order Now
+                .clearfix
+        :javascript
+          $(document).ready(function(){
+            $('.nav-tabs li:not(:first-child)').removeClass("active");
+          })
+      - else
+        oops

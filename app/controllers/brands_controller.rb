@@ -1,8 +1,8 @@
 class BrandsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :verify_admin
+  before_action :authenticate_user!, only: %w(edit update create)
+  before_action :verify_admin, only: %w(edit update create)
   
-  before_action :set_brand, only: %w(edit update)
+  before_action :set_brand, only: %w(edit update show)
   
   def create
   	Brand.create(brands_params)
@@ -29,10 +29,22 @@ class BrandsController < ApplicationController
     end
   end
 
+  def show
+    @brands = Brand.all
+  end
+
+  def index
+    @brands = Brand.all
+    @types = @brands.joins(:types).pluck('types.name').uniq
+    @products = Product.all
+    @first_products = @products.where(type_id: Type.find_by_name(@types.first))
+    @second_products = @products.where('id not IN (?)', @first_products.pluck(:id))
+  end
+
   private
 
     def brands_params
-  	  params.require(:brand).permit(:name)
+  	  params.require(:brand).permit(:name, :logo)
     end
 
     def set_brand

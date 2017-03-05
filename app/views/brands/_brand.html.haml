@@ -1,4 +1,4 @@
 .col-md-12.badge{id: 'brand_'+brand.id.to_s}
-  = brand.name
+  = brand.name.upcase
   = link_to fa_icon("pencil-square-o"), edit_brand_path(brand), remote: true
   = link_to fa_icon("trash-o"), "javascript:void(0);"

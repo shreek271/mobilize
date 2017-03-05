@@ -1,23 +1,25 @@
-.mobilize
-  .transparent-background-home
-    .row.margin-right-zero
-      .mobilize-heading
-        The Best Mobile Sellers
-        %br/
-        Available on Mobilize.
-        %p Browse. Buy. Done
-    .row.margin-right-zero
-      .col-md-offset-3.col-md-6
-        %form{:action => ""}
-          .input-group.input-group-lg
-            %input.form-control{:placeholder => "What are you looking for...", :type => "text"}/
-            %span.input-group-btn
-              %button.btn.btn-success{:type => "button"}
-                Find
-.container.section
-  %h2
+- if !current_user.present?
+  .mobilize
+    .transparent-background-home
+      .row.margin-right-zero
+        .mobilize-heading
+          The Best Mobile Sellers
+          %br/
+          Available on Mobilize.
+          %p Browse. Buy. Done
+      / .row.margin-right-zero
+      /   .col-md-offset-3.col-md-6
+      /     %form{:action => ""}
+      /       .input-group.input-group-lg
+      /         %input.form-control{:placeholder => "What are you looking for...", :type => "text"}/
+      /         %span.input-group-btn
+      /           %button.btn.btn-success{:type => "button"}
+      /             Find
+.latest-arrivals
+  %br
+  %h2.home-h2
     Latest Arrivals
-  .row.text-center
+  .row.text-center.zero-margin
     .col-md-3
       .mobilize-card.thumbnail
         = image_tag "mobile1.jpg", class: "img-responsive", style: "height: 175px"
@@ -33,4 +35,17 @@
         = image_tag "mobile3.jpg", class: "img-responsive", style: "height: 175px"
         %h5 SONY
         %h4 Rs 10000
+  %br
 
+.shop-brands
+  %br
+  %h2.home-h2
+    Shop by Brands
+  .row.text-center.zero-margin
+    - @brands.each do |brand|
+      .col-md-3
+        .thumbnail
+          = link_to image_tag(brand.logo.url, class: "img-responsive", style: "height: 125px"), brand_path(brand)
+  %br
+  %br
+  %br
