@@ -20,12 +20,6 @@
 # Ignore Spring files.
 /spring/*.pid
 
-# Ignore uploaded test images.
-/public/uploads
-/public/system
-/public/assets
-/public/ckeditor_assets
-
 #Ignore the database and secrets.yml files
 config/database.yml
 config/secrets.yml
