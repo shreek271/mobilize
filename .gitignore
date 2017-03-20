@@ -23,7 +23,6 @@
 #Ignore the database and secrets.yml files
 config/database.yml
 config/secrets.yml
-config/aws.yml
 
 #other files
 ._.DS_Store
