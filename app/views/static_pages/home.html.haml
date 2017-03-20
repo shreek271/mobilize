@@ -45,7 +45,7 @@
     - @brands.each do |brand|
       .col-md-3
         .thumbnail
-          = link_to image_tag(brand.logo.url, class: "img-responsive", style: "height: 125px"), brand_path(brand)
+          = link_to image_tag(brand.logo.url(:thumb), class: "img-responsive", style: "height: 125px"), brand_path(brand)
   %br
   %br
   %br

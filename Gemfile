@@ -21,7 +21,8 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 #for the images
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '< 2.0'
 #to authenticate the users
 gem 'devise'
 # to use the haml
