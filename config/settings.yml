@@ -4,7 +4,8 @@ defaults: &defaults
   
 production:
   <<: *defaults
-  HOST_URL: http://www.mobilizezone.com
+  #HOST_URL: http://www.mobilizezone.com
+  RAILS_SERVE_STATIC_FILES: true
 
 development:
   <<: *defaults
