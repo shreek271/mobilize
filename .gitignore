@@ -25,6 +25,12 @@ config/database.yml
 config/secrets.yml
 config/aws.yml
 
+# Ignore uploaded test images.
+/public/uploads
+/public/system
+/public/assets
+/public/ckeditor_assets
+
 #other files
 ._.DS_Store
 ._Gemfile
