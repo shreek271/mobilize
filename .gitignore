@@ -23,6 +23,7 @@
 #Ignore the database and secrets.yml files
 config/database.yml
 config/secrets.yml
+config/settings.yml
 config/aws.yml
 
 # Ignore uploaded test images.
