@@ -16,9 +16,9 @@ set :domain, 'ec2-35-154-219-144.ap-south-1.compute.amazonaws.com'
 set :deploy_to, '/home/ubuntu/mobilize'
 set :rails_env, 'production'
 set :user, 'ubuntu'
-set :repository, 'https://github.com/shreek271/mobilize'
+set :repository, 'git@github.com:shreek271/mobilize'
 set :branch, 'master'
-
+set :forward_agent, true
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
