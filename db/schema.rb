@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303101843) do
+ActiveRecord::Schema.define(version: 20170330093240) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["product_id"], name: "index_images_on_product_id", using: :btree
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -26,12 +41,16 @@ ActiveRecord::Schema.define(version: 20170303101843) do
     t.string   "color"
     t.integer  "brand_id"
     t.integer  "type_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "general"
+    t.string   "display"
+    t.string   "software"
+    t.string   "camera"
+    t.string   "connectivity"
+    t.string   "memory"
+    t.string   "battery"
+    t.string   "dimensions"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["type_id"], name: "index_products_on_type_id", using: :btree
   end

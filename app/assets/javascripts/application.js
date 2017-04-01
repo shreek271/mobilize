@@ -15,5 +15,7 @@
 //= require turbolinks
 //= require bootstrap-select
 //= require bootstrap-sprockets
+//= require jqzoom
 //= require jquery.remotipart
+//= require jquery.flexisel
 //= require_tree .

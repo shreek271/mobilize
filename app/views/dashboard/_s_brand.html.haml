@@ -1,5 +1,8 @@
-= form_for(@brand, remote:true, html: {class: "form-horizontal" }) do |f|
-  = f.text_field :name, class: "form-control input-sm note-group", placeholder:"eg. Samsung, Micromax..."
+= form_for(@brand, remote:true, html: {multipart: true, class: "form-horizontal" }, authenticity_token: true) do |f|
+  = f.text_field :name, class: "form-control input-sm", placeholder:"eg. Samsung, Micromax..."
+  %br
+  = f.label :logo
+  = f.file_field :logo
   %br
   = f.submit  class: 'btn btn-xs btn-success', data: {disable_with: "Please wait..." }
   - if !f.object.new_record?

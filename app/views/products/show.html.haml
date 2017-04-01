@@ -1,0 +1,41 @@
+.row.zero-margin
+  %br
+  .col-md-12
+    - @brands.each do |brand|
+      - magic_class = brand == @product.brand ? 'btn selected-button' : 'btn btn-default'
+      = link_to brand.name.upcase, brand_path(brand), class: magic_class
+    = link_to 'ALL', brands_path, class: 'btn btn-default'
+%hr.zero-margin-bottom
+.row.zero-margin{style: 'background-color: #F8F9F9'}
+  %br
+  .col-md-5
+    .bzoom_wrap.product-image
+      %ul#bzoom
+        - @product.images.each do |item|
+          %li
+            %img.bzoom_thumb_image{:src => item.picture.url(:medium)}
+            %img.bzoom_big_image{:src =>  item.picture.url}
+  .col-md-7
+    .product-details
+      %br
+      %span.product-heading= @product.name.capitalize
+      .simpleCart_shelfItem
+        %p
+          %span= "Rs.#{@product.price}"
+          %i.item_price= "Rs.#{@product.price - 20}"
+      .specifications
+        %h4 Specifications
+        %p Rom:
+        %p Camera:
+        %p Battery:
+        %p description:
+
+:javascript
+$(document).ready(function(){
+  $("#bzoom").zoom({
+    zoom_area_width: 300,
+    thumb_image_width: 275,  
+    thumb_image_height: 325
+  });
+})
+  

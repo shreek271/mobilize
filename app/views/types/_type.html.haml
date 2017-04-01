@@ -1,4 +1,4 @@
 .col-md-12.badge{id: 'type_'+type.id.to_s}
-  = type.name
+  = type.name.upcase
   = link_to fa_icon("pencil-square-o"), edit_type_path(type), remote: true
   = link_to fa_icon("trash-o"), "javascript:void(0);"

@@ -20,15 +20,17 @@
 # Ignore Spring files.
 /spring/*.pid
 
+#Ignore the database and secrets.yml files
+config/database.yml
+config/secrets.yml
+config/settings.yml
+config/aws.yml
+
 # Ignore uploaded test images.
 /public/uploads
 /public/system
 /public/assets
 /public/ckeditor_assets
-
-#Ignore the database and secrets.yml files
-config/database.yml
-config/secrets.yml
 
 #other files
 ._.DS_Store
@@ -40,3 +42,7 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 /.byebug_history
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

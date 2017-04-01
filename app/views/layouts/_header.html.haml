@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse.navbar-static-top
+%nav.navbar.navbar-inverse.navbar-fixed-top
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "/"} Mobilize
+      %a.navbar-brand{:href => "/"} MobilizeZone
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
@@ -22,5 +22,7 @@
               %li.divider{:role => "separator"}
               %li= link_to "Log out", destroy_user_session_path, method: :delete
         - else
-          %li= link_to "Sign Up", new_user_registration_path
-          %li= link_to "Log In", new_user_session_path
+          / %li= link_to "Sign Up", new_user_registration_path
+          / %li= link_to "Log In", new_user_session_path
+          %li= link_to "Login", "#loginModal", "data-toggle" => "modal"
+          %li= link_to "Register", "#signupModal", "data-toggle" => "modal"
