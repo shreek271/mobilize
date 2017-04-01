@@ -12,10 +12,12 @@ require 'mina/rvm'    # for rvm support. (https://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'mobilize'
-set :domain, 'ec2-35-154-219-144.ap-south-1.compute.amazonaws.com'
-set :deploy_to, '/home/ubuntu/mobilize'
+set :domain, '172.104.43.56'
+set :deploy_to, '/home/apps/mobilize'
 set :rails_env, 'production'
-set :user, 'ubuntu'
+set :user, 'root'
+set :port, '22'
+set :roles, %w{web app db}
 set :repository, 'git@github.com:shreek271/mobilize'
 set :branch, 'master'
 set :forward_agent, true
@@ -26,11 +28,12 @@ set :forward_agent, true
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 set :shared_dirs, fetch(:shared_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/uploads')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/puma.rb')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'config/puma  .rb')
  
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
+
   invoke :'rvm:use', 'ruby-2.3.1@mobilize'
 end
 
@@ -40,7 +43,6 @@ task :setup do
   # command %{rbenv install 2.3.0}
   command %[touch "#{fetch(:shared_path)}/config/database.yml"] 
   command %[touch "#{fetch(:shared_path)}/config/secrets.yml"]
-  command %[touch "#{fetch(:shared_path)}/config/aws.yml"]
   command %[touch "#{fetch(:shared_path)}/config/settings.yml"]
   command %[touch "#{fetch(:shared_path)}/config/puma.rb"]
 end

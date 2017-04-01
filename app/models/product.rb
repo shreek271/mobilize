@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   
   belongs_to :brand
   belongs_to :type
-
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  has_many :images, :dependent => :destroy
+  #accepts_nested_attributes_for :images, :allow_destroy => true
+  attr_accessor :picture
 end

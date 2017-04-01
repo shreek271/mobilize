@@ -15,10 +15,19 @@
       /         %span.input-group-btn
       /           %button.btn.btn-success{:type => "button"}
       /             Find
+.shop-brands
+  %br
+  %h2.home-h2
+    Shop by Brands
+  %ul#flexiselDemo1
+    - @brands.each do |brand|
+      %li= link_to image_tag(brand.logo.url(:thumb), class: 'thumbnail', style: "width: 125px; height: 125px"), brand_path(brand)
+.clearfix
 .latest-arrivals
   %br
   %h2.home-h2
     Latest Arrivals
+  %br
   .row.text-center.zero-margin
     .col-md-3
       .mobilize-card.thumbnail
@@ -37,15 +46,15 @@
         %h4 Rs 10000
   %br
 
-.shop-brands
-  %br
-  %h2.home-h2
-    Shop by Brands
-  .row.text-center.zero-margin
-    - @brands.each do |brand|
-      .col-md-3
-        .thumbnail
-          = link_to image_tag(brand.logo.url(:thumb), class: "img-responsive", style: "height: 125px"), brand_path(brand)
-  %br
-  %br
-  %br
+:javascript
+$(document).ready(function(){
+  $("#flexiselDemo1").flexisel({
+    visibleItems: 3,
+        itemsToScroll: 1,         
+        autoPlay: {
+            enable: true,
+            interval: 5000,
+            pauseOnHover: true
+        }
+  });
+})

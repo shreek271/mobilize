@@ -102,14 +102,4 @@ Rails.application.configure do
     # TODO: password should be from ENV or SettingsLogic
     password: ENV['GMAIL_PASSWORD'] 
   }
-
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_host_name => "s3.ap-south-1.amazonaws.com",
-    :s3_credentials => {
-      :bucket => 'mobilizezone', 
-      :access_key_id => ENV['AWS_ACCESS_KEY'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
-  }
 end

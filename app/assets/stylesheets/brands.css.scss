@@ -187,7 +187,7 @@
 
 .brand-item-box:hover{
     background-color: #f4f4f4;
-    .simpleCart_shelfItem button{
+    .simpleCart_shelfItem .w3ls-cart{
 	  background: #608a77;
 	  color:#fff;
 	  border:1px solid #608a77;
@@ -217,7 +217,7 @@
 .brand-item-box p i{
 	font-style:normal;
 }
-.simpleCart_shelfItem button.w3ls-cart {
+.simpleCart_shelfItem .w3ls-cart {
     font-size: 14px;
     color: #000;
     margin: 0;

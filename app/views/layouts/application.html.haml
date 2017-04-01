@@ -14,4 +14,8 @@
           %div{class: "super-alert alert #{flash_class(message_type)}"}
             %a.close{"aria-label" => "close", "data-dismiss" => "alert", href: "#", title: "close"} ×
             = message
+      = render "welcome/login_form"
+      = render "welcome/signup_form"
       = yield
+      %footer
+        = render 'layouts/footer'

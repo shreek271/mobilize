@@ -22,25 +22,13 @@
               - @brand.products.where("type_id = (?)", type1.id).each do |item|
                 .col-md-3.brand-item-box
                   .hs-wrapper
-                    = image_tag item.image.url, class: "img-responsive", style: "height:250px; width:220px;"
-                    = image_tag "mobile1.jpg", class: "img-responsive", style: "height:250px; width:220px;"
-                    .w3_hs_bottom
-                      %ul
-                        %li
-                          %a{"data-target" => "#myModal", "data-toggle" => "modal", :href => "#"}
-                            %span.glyphicon.glyphicon-eye-open{"aria-hidden" => "true"}
+                    = link_to image_tag(item.images.first.picture.url, class: "img-responsive", style: "height:250px; width:220px;"), product_path(item)
                   %h5
-                    %a{:href => "single.html"}=item.name
+                    = link_to item.name, product_path(item)
                   .simpleCart_shelfItem
                     %p
                       %span= "RS.#{item.price}"
-                      %i.item_price= "Rs.#{item.price - 20}"
-                    %form{:action => "#", :method => "post"}
-                      %input{:name => "cmd", :type => "hidden", :value => "_cart"}/
-                      %input{:name => "add", :type => "hidden", :value => "1"}/
-                      %input{:name => "w3ls_item", :type => "hidden", :value => "Mobile Phone1"}/
-                      %input{:name => "amount", :type => "hidden", :value => "350.00"}/
-                      %button.w3ls-cart{:type => "submit"} Order Now
+                      %i.item_price= "Rs.#{item.price - 20}"              
               .clearfix
           - @brand.types.distinct.drop(1).each do |type|
             .tab-pane.fade{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type.name}"}
@@ -48,24 +36,24 @@
                 - @brand.products.where("type_id = (?)", type.id).each do |item|
                   .col-md-3.brand-item-box
                     .hs-wrapper
-                      = image_tag item.image.url, class: "img-responsive"
+                      = image_tag item.images.first.picture.url, class: "img-responsive"
                       .w3_hs_bottom
                         %ul
                           %li
                             %a{"data-target" => "#myModal", "data-toggle" => "modal", :href => "#"}
                               %span.glyphicon.glyphicon-eye-open{"aria-hidden" => "true"}
                     %h5
-                      %a{:href => "single.html"}=item.name
+                      = link_to item.name, product_path(item)
                     .simpleCart_shelfItem
                       %p
                         %span= item.price
                         %i.item_price= item.price - 20
-                      %form{:action => "#", :method => "post"}
-                        %input{:name => "cmd", :type => "hidden", :value => "_cart"}/
-                        %input{:name => "add", :type => "hidden", :value => "1"}/
-                        %input{:name => "w3ls_item", :type => "hidden", :value => "Mobile Phone1"}/
-                        %input{:name => "amount", :type => "hidden", :value => "350.00"}/
-                        %button.w3ls-cart{:type => "submit"} Order Now
+                      / %form{:action => "#", :method => "post"}
+                      /   %input{:name => "cmd", :type => "hidden", :value => "_cart"}/
+                      /   %input{:name => "add", :type => "hidden", :value => "1"}/
+                      /   %input{:name => "w3ls_item", :type => "hidden", :value => "Mobile Phone1"}/
+                      /   %input{:name => "amount", :type => "hidden", :value => "350.00"}/
+                      /   %button.w3ls-cart{:type => "submit"} Order Now
                 .clearfix
         :javascript
           $(document).ready(function(){

@@ -18,8 +18,7 @@
             - @first_products.each do |item|
               .col-md-3.brand-item-box
                 .hs-wrapper
-                  = image_tag item.image.url, class: "img-responsive", style: "height:250px; width:220px;"
-                  = image_tag "mobile1.jpg", class: "img-responsive", style: "height:250px; width:220px;"
+                  = image_tag item.images.first.picture.url, class: "img-responsive", style: "height:250px; width:220px;"
                   .w3_hs_bottom
                     %ul
                       %li
@@ -44,7 +43,7 @@
               - @second_products.where('type_id = (?)', Type.find_by_name(type)).each do |item|
                 .col-md-3.brand-item-box
                   .hs-wrapper
-                    = image_tag item.image.url, class: "img-responsive"
+                    = image_tag item.images.first.picture.url, class: "img-responsive"
                     .w3_hs_bottom
                       %ul
                         %li
