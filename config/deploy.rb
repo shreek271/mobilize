@@ -32,8 +32,9 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
  
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
-task :environment do
+set :rvm_path, "/usr/local/rvm/scripts/rvm"
 
+task :environment do
   invoke :'rvm:use', 'ruby-2.3.1@mobilize'
 end
 
