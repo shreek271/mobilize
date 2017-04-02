@@ -13,9 +13,9 @@ require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
 set :application_name, 'mobilize'
 set :domain, '172.104.43.56'
-set :deploy_to, '/home/apps/mobilize'
+set :deploy_to, '/home/deployer/apps/mobilize'
 set :rails_env, 'production'
-set :user, 'root'
+set :user, 'deployer'
 set :port, '22'
 set :roles, %w{web app db}
 set :repository, 'git@github.com:shreek271/mobilize'
@@ -32,7 +32,7 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
  
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
-set :rvm_path, "/usr/local/rvm/scripts/rvm"
+#set :rvm_use_path, "/usr/local/rvm/scripts/rvm"
 
 task :environment do
   invoke :'rvm:use', 'ruby-2.3.1@mobilize'
