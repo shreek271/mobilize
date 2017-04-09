@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-heading
-    %h3.panel-title.text-center Create Product
+    %h3.panel-title.text-center= @product.new_record? ? 'Create Product' : 'Edit Product'
   .panel-body#products-tab
     = form_for(@product, html: {multipart: true}) do |f|
       .row

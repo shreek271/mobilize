@@ -19,7 +19,7 @@
     .product-details
       %br
       %span.product-heading= @product.name.capitalize
-      .simpleCart_shelfItem
+      .price-box
         %p
           %span= "Rs.#{@product.price}"
           %i.item_price= "Rs.#{get_price(@product)}"        
@@ -38,8 +38,13 @@
       %br
       %br
       .row
-        .col-md-3
-          = link_to "order now", "#orderModal", "data-toggle" => "modal", class: "w3ls-cart"
+        .col-md-6
+          - if current_user.present? && current_user.admin
+            = link_to "edit", edit_product_path(@product), class: "btn btn-default w3ls-cart"
+          - else
+            - modal = current_user.present? ? "#orderModal" : "#loginModal"
+            = link_to "Buy now", modal, "data-toggle" => "modal", class: "btn btn-default form-control order-now-button"
+
 .row.zero-margin{style: 'background-color: #F8F9F9'}
   %br
   .col-md-12
