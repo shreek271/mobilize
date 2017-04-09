@@ -1,0 +1,20 @@
+#orderModal.modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"} &times;
+        %h4.modal-title Login
+      .modal-body
+        = form_for(@order) do |f|
+          = f.hidden_field :product_id, value: @product.id, readonly: true
+          .form-group
+            = f.label :quantity
+            = f.number_field :quantity, class: "form-control"
+          .form-group
+            = f.label :address
+            = f.text_area :address, class: "form-control"
+          .form-group
+            = f.label :mobile_no, "Mobile"
+            = f.number_field, :mobile_no, class: "form-control"
+          .form-group.actions
+            = f.submit "Submit", class: 'btn btn-sm btn-primary'

@@ -2,77 +2,68 @@
   .panel-heading
     %h3.panel-title.text-center Create Product
   .panel-body#products-tab
-    = form_for(@product, html: {multipart: true}, remote: true, authenticity_token: true) do |f|
+    = form_for(@product, html: {multipart: true}) do |f|
       .row
-        .col-md-6
+        .col-md-3
           = f.label :name
           = f.text_field :name, class: "form-control"
-        .col-md-6
-          = f.label :model
-          = f.text_field :model, class: 'form-control'
-      %br	  
-      .row
-        .col-md-6
-          = f.label :brand
-          = f.collection_select(:brand_id, Brand.all, :id, :name, {}, {class: "selectpicker form-control"})
-        .col-md-6
-          = f.label :type
-          = f.collection_select(:type_id, Type.all, :id, :name, {}, {class: "selectpicker form-control"})
-      %br
-      .row
-        .col-md-6
+        .col-md-3
+          = f.label :quantity
+          = f.text_field :quantity, class: 'form-control'
+        .col-md-3
           = f.label :price
           = f.number_field :price, class: "form-control"
-        .col-md-6
-          = f.label :quantity
-          = f.number_field :quantity, class: "form-control"
-      %br
+        .col-md-3
+          = f.label :discount
+          = f.number_field :discount, class: "form-control"
+      %br	  
       .row
-        .col-md-6
+        .col-md-3
+          = f.label :brand
+          = f.collection_select(:brand_id, Brand.all, :id, :name, {}, {class: "selectpicker form-control"})
+        .col-md-3
+          = f.label :type
+          = f.collection_select(:type_id, Type.all, :id, :name, {}, {class: "selectpicker form-control"})
+        .col-md-3
           = f.label :color
           = f.text_field :color, class: "form-control"
-        .col-md-6
+        .col-md-3
           = f.label :picture
           = f.file_field :picture, multiple: true
       %br
       .row
-        .col-md-12
+        .col-md-6
           =f.label :general
           =f.text_area :general, class: "form-control"
-      %br
-      .row
-        .col-md-12
+        .col-md-6
           =f.label :display
           =f.text_area :display, class: "form-control"
       %br
       .row
-        .col-md-12
+        .col-md-6
           =f.label :software
           =f.text_area :software, class: "form-control"
-      %br
-      .row
-        .col-md-12
+        .col-md-6
           =f.label :camera
           =f.text_area :camera, class: "form-control"
       %br
       .row
-        .col-md-12
+        .col-md-6
           =f.label :connectivity
           =f.text_area :connectivity, class: "form-control"
-      %br
-      .row
-        .col-md-12
+        .col-md-6
           =f.label :memory
           =f.text_area :memory, class: "form-control"
       %br
       .row
-        .col-md-12
+        .col-md-4
           =f.label :battery
           =f.text_area :battery, class: "form-control"
-      %br
-      .row
-        .col-md-12
+        .col-md-4
           =f.label :dimensions
           =f.text_area :dimensions, class: "form-control"
+        .col-md-4
+          = f.label :highlight
+          = f.text_area :highlight, class: 'form-control'
       %br/
       = f.submit  class: 'btn btn-xs btn-success', data: {disable_with: "Please wait..." }

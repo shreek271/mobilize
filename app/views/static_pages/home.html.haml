@@ -1,27 +1,31 @@
-- if !current_user.present?
-  .mobilize
-    .transparent-background-home
-      .row.margin-right-zero
-        .mobilize-heading
-          The Best Mobile Sellers
-          %br/
-          Available on Mobilize.
-          %p Browse. Buy. Done
-      / .row.margin-right-zero
-      /   .col-md-offset-3.col-md-6
-      /     %form{:action => ""}
-      /       .input-group.input-group-lg
-      /         %input.form-control{:placeholder => "What are you looking for...", :type => "text"}/
-      /         %span.input-group-btn
-      /           %button.btn.btn-success{:type => "button"}
-      /             Find
-.shop-brands
+.mobilize
+  .transparent-background-home
+    .row.margin-right-zero
+      .mobilize-heading
+        The Best Mobile Sellers
+        %br/
+        Available on Mobilize.
+        %p Browse. Buy. Done
+    / .row.margin-right-zero
+    /   .col-md-offset-3.col-md-6
+    /     %form{:action => ""}
+    /       .input-group.input-group-lg
+    /         %input.form-control{:placeholder => "What are you looking for...", :type => "text"}/
+    /         %span.input-group-btn
+    /           %button.btn.btn-success{:type => "button"}
+    /             Find
+.row.shop-brands
   %br
   %h2.home-h2
     Shop by Brands
-  %ul#flexiselDemo1
-    - @brands.each do |brand|
-      %li= link_to image_tag(brand.logo.url(:thumb), class: 'thumbnail', style: "width: 125px; height: 125px"), brand_path(brand)
+  / %ul#flexiselDemo1
+  /   - @brands.each do |brand|
+  /     %li= link_to image_tag(brand.logo.url(:thumb), class: 'thumbnail', style: "width: 125px; height: 125px"), brand_path(brand)
+  .col-md-1
+  - @brands.each do |brand|
+    .col-md-2.text-center
+      = link_to image_tag(brand.logo.url(:thumb), class: 'img-circle', style: "width: 125px; height: 125px"), brand_path(brand)
+
 .clearfix
 .latest-arrivals
   %br

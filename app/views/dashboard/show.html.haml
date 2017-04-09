@@ -1,11 +1,11 @@
 .row.zero-margin
   %h3 Dashboard
   %hr
-  .col-md-3#brands-tab
-    = render 'dashboard/brand_form'
-        
-  .col-md-6
+.row-zero-margin
+  .col-md-12
     = render 'products/form'
-
-  .col-md-3#product-types-tab
+.row.zero-margin
+  .col-md-4#brands-tab
+    = render 'dashboard/brand_form'
+  .col-md-4#product-types-tab
     = render "dashboard/type_form"

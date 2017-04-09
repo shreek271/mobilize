@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330093240) do
+ActiveRecord::Schema.define(version: 20170409081229) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -33,24 +33,38 @@ ActiveRecord::Schema.define(version: 20170330093240) do
     t.index ["product_id"], name: "index_images_on_product_id", using: :btree
   end
 
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "address"
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "mobile_no"
+    t.integer  "status",     default: 1
+    t.index ["product_id"], name: "index_orders_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "model"
+    t.integer  "discount"
     t.integer  "price"
     t.integer  "quantity"
     t.string   "color"
     t.integer  "brand_id"
     t.integer  "type_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "general"
-    t.string   "display"
-    t.string   "software"
-    t.string   "camera"
-    t.string   "connectivity"
-    t.string   "memory"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.text     "general",      limit: 65535
+    t.text     "display",      limit: 65535
+    t.text     "software",     limit: 65535
+    t.text     "camera",       limit: 65535
+    t.text     "connectivity", limit: 65535
+    t.text     "memory",       limit: 65535
     t.string   "battery"
     t.string   "dimensions"
+    t.string   "highlight"
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["type_id"], name: "index_products_on_type_id", using: :btree
   end
@@ -86,6 +100,8 @@ ActiveRecord::Schema.define(version: 20170330093240) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "types"
 end

@@ -22,13 +22,46 @@
       .simpleCart_shelfItem
         %p
           %span= "Rs.#{@product.price}"
-          %i.item_price= "Rs.#{@product.price - 20}"
-      .specifications
-        %h4 Specifications
-        %p Rom:
-        %p Camera:
-        %p Battery:
-        %p description:
+          %i.item_price= "Rs.#{get_price(@product)}"        
+          %span{style: "text-decoration:none; color: #999;"}="(#{@product.discount}% off)"
+      .row.product-color
+        .col-xs-2.text-gray Color
+        .col-xs-8
+          %li=@product.color
+      %br
+      .row.highlights
+        .col-sm-2.text-gray
+          %h5 Highlights
+        .col-sm-10
+          - @product.highlight.split(",").each do |hglt|
+            %li= hglt
+      %br
+      %br
+      .row
+        .col-md-3
+          = link_to "order now", "#orderModal", "data-toggle" => "modal", class: "w3ls-cart"
+.row.zero-margin{style: 'background-color: #F8F9F9'}
+  %br
+  .col-md-12
+    .specifications
+      %br
+      %h4.text-undeline General Specifications
+      %p= @product.general
+      %h4.text-undeline Display
+      %p= @product.display
+      %h4.text-undeline Os and Processors
+      %p= @product.software
+      %h4.text-undeline Camera
+      %p= @product.camera
+      %h4.text-undeline Connectivity
+      %p= @product.connectivity
+      %h4.text-undeline Memory
+      %p= @product.memory
+      %h4.text-undeline Battery
+      %p= @product.battery
+      %h4.text-undeline Dimensions
+      %p= @product.dimensions
+= render 'orders/form'
 
 :javascript
 $(document).ready(function(){
