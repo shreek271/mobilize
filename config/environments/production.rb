@@ -94,7 +94,7 @@ Rails.application.configure do
   config.action_mailer.default charset: "utf-8"
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    domain: '172.104.43.56:80'
+    domain: '172.104.43.56:80',
     port: 587,
     user_name: ENV['GMAIL_USERNAME'],
     authentication: "plain",
