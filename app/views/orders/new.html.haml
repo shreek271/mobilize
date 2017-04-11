@@ -1,0 +1,10 @@
+.row.zero-margin
+  .request_preview_body
+    .col-md-4
+    .col-md-4.request_preview
+      = render "form"
+  .request_preview_button
+    .col-md-4.col-md-offset-4.request_preview_buttons
+      / - if @home_request.status == "Pending" && !@home_request.email_sent
+      /   = link_to fa_icon("pencil-square-o",text: "Edit"), edit_home_request_path(@home_request), class: "btn btn-primary btn-sm", 'data-turbolinks' => false
+      /   = link_to "Apply", home_request_apply_path(@home_request, email_sent: true), class: 'btn btn-success btn-sm pull-right'

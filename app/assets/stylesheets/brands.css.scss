@@ -10,7 +10,7 @@
 
 .image-wrapper{
 	width: 196px;
-    height: 223px;
+  height: 223px;
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
@@ -22,21 +22,21 @@
 }
 
 .nav-tabs > li > a {
-    font-size: 1em;
-    color: #212121;
-    font-family: 'Glegoo', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 1em;
+  color: #212121;
+  font-family: 'Glegoo', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 	border-radius: 0;
 	border:none;
 	border-bottom: 1px solid #608a77;
 	margin: 0;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    background-color: #608a77 !important;
+  background-color: #608a77 !important;
 	color:#fff !important; 
 	border: none;
-    border-bottom: 1px solid #608a77;
+  border-bottom: 1px solid #608a77;
 } 
 .nav-tabs > li > a:hover {
     border-bottom: 1px solid #608a77;
@@ -51,29 +51,36 @@
 	background-color: #608a77;
 	color:#fff; 
 	border: none;
-    border-bottom: 1px solid #608a77;
-    font-family: 'Glegoo', serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  margin-bottom: 4px !important;
+  border-bottom: 1px solid #608a77;
+  font-family: 'Glegoo', serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
+.mybutton{
+  margin-bottom: 4px !important;
+}
 .brand-item-box {
-    padding-left: 0;
+  padding-left: 0;
 	text-align: center;
 	padding-bottom: 15px;
 	padding-top: 15px;
 }
+
 .brand_tabs {
     padding: 2em 0 0;
 }
+
 .brand-item-box h5{
 	margin:2em 0 0;
 }
+
 .brand-item-box h5 a {
-    font-size: 1.2em;
-    color: #ff5063;
-    text-decoration: none;
-    font-weight: 700;
+  font-size: 1.2em;
+  color: #ff5063;
+  text-decoration: none;
+  font-weight: 700;
 	-webkit-transition:.5s all;
 	-moz-transition:.5s all;
 	-o-transition:.5s all;
@@ -81,28 +88,28 @@
 }
 
 .brand-item-box:hover{
-    background-color: #f4f4f4;
-    img {
-      -moz-transform: scale3d(1.1, 1.1, 1);
-      -o-transform: scale3d(1.1, 1.1, 1);
-      -ms-transform: scale3d(1.1, 1.1, 1);
-      -webkit-transform: scale3d(1.1, 1.1, 1);
-      transform: scale3d(1.1, 1.1, 1);
-    }
+  background-color: lavender;
+  img {
+    -moz-transform: scale3d(1.1, 1.1, 1);
+    -o-transform: scale3d(1.1, 1.1, 1);
+    -ms-transform: scale3d(1.1, 1.1, 1);
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
 }
 
 .price-box p{
-	font-size: 1.6em;
-    color: #212121;
-    margin: 0.5em 0 1em;
-    font-weight: 600;
+	font-size: 1.4em;
+  color: #212121;
+  margin: 0.5em 0 1em;
+  font-weight: 600;
 }
 .price-box p span{
 	color: #999;
-    font-size: .8em;
-    text-decoration: line-through;
-    padding-right: 1em;
-    font-weight: 300;
+  font-size: .8em;
+  text-decoration: line-through;
+  padding-right: 1em;
+  font-weight: 300;
 }
 .brand-item-box p i{
 	font-style:normal;

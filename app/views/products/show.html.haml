@@ -10,7 +10,7 @@
   %br
   .col-md-5
     .bzoom_wrap.product-image
-      %ul#bzoom
+      %ul#bzoom{data: {imageCount: @product.images.count}}
         - @product.images.each do |item|
           %li
             %img.bzoom_thumb_image{:src => item.picture.url(:medium)}
@@ -66,12 +66,21 @@
       %p= @product.battery
       %h4.text-undeline Dimensions
       %p= @product.dimensions
-= render 'orders/form'
+
+#orderModal.modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"} &times;
+        %h4.modal-title Place your order here...
+      .modal-body
+        = render 'orders/form'
 
 :javascript
 $(document).ready(function(){
   $("#bzoom").zoom({
-    zoom_area_width: 300,
+    small_thumbs: $("#bzoom").data("imagecount"),
+    zoom_area_width: 400,
     thumb_image_width: 275,  
     thumb_image_height: 325
   });

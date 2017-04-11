@@ -88,13 +88,12 @@ Rails.application.configure do
   config.action_mailer.asset_host = ENV['HOST_URL']
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host:ENV['HOST_URL'], port: '80' }
+  config.action_mailer.default_url_options = { host: 'www.mobilizezone.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default charset: "utf-8"
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    domain: '172.104.43.56:80',
     port: 587,
     user_name: ENV['GMAIL_USERNAME'],
     authentication: "plain",

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409081229) do
+ActiveRecord::Schema.define(version: 20170411094417) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170409081229) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "address"
+    t.string   "line_one"
     t.integer  "quantity"
     t.integer  "product_id"
     t.integer  "user_id"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20170409081229) do
     t.datetime "updated_at",             null: false
     t.integer  "mobile_no"
     t.integer  "status",     default: 1
+    t.integer  "pin_code"
+    t.string   "landmark"
+    t.string   "area"
     t.index ["product_id"], name: "index_orders_on_product_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20170409081229) do
     t.string   "color"
     t.integer  "brand_id"
     t.integer  "type_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.text     "general",      limit: 65535
     t.text     "display",      limit: 65535
     t.text     "software",     limit: 65535
@@ -65,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170409081229) do
     t.string   "battery"
     t.string   "dimensions"
     t.string   "highlight"
+    t.boolean  "latest",                     default: false
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["type_id"], name: "index_products_on_type_id", using: :btree
   end

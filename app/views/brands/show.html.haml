@@ -1,11 +1,11 @@
 .row.zero-margin
   %br
-  .col-md-6
+  .col-md-12
     /%span#brand-name= @brand.name
     - @brands.each do |brand|
       - magic_class = brand == @brand ? 'btn selected-button' : 'btn btn-default'
-      = link_to brand.name.upcase, brand_path(brand), class: magic_class
-    = link_to 'ALL', brands_path, class: 'btn btn-default'
+      = link_to brand.name.upcase, brand_path(brand), class: "#{magic_class} mybutton"
+    = link_to 'ALL', brands_path, class: 'btn btn-default mybutton'
 %br
 .row.zero-margin
   .product-items-tab
@@ -20,29 +20,13 @@
           .tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type1.name}"}
             .brand_tabs
               - @brand.products.where("type_id = (?)", type1.id).each do |item|
-                .col-md-3.brand-item-box
-                  .image-wrapper
-                    = link_to image_tag(item.images.first.picture.url, class: "img-responsive", style: "height:250px; width:220px;"), product_path(item)
-                  %h5
-                    = link_to item.name, product_path(item)
-                  .price-box
-                    %p
-                      %span= "RS.#{item.price}"
-                      %i.item_price= "Rs.#{get_price(item)}"            
+                = render :partial => "products/product_box", locals: {item: item}   
               .clearfix
           - @brand.types.distinct.drop(1).each do |type|
             .tab-pane.fade{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type.name}"}
               .brand_tabs
                 - @brand.products.where("type_id = (?)", type.id).each do |item|
-                  .col-md-3.brand-item-box
-                    .image-wrapper
-                      = image_tag item.images.first.picture.url, class: "img-responsive"
-                    %h5
-                      = link_to item.name, product_path(item)
-                    .price-box
-                      %p
-                        %span= item.price
-                        %i.item_price= "Rs.#{get_price(item)}"
+                  = render :partial => "products/product_box", locals: {item: item}
                 .clearfix
         :javascript
           $(document).ready(function(){
@@ -50,3 +34,5 @@
           })
       - else
         oops
+%br
+%br

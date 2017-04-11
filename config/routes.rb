@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   resources :products
   resources :brands
   resources :types
-  resources :orders
+  resources :orders do
+    patch :update_status
+  end
   
   get 'home' => 'static_pages#home'
   get 'dashboard' => 'dashboard#show'
+  get 'opinion' => "static_pages#opinion"
   root to: "static_pages#home"
 end

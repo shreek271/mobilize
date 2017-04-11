@@ -1,0 +1,10 @@
+.col-md-3.brand-item-box
+  .image-wrapper
+    = link_to image_tag(item.images.first.picture.url, class: "img-responsive"), product_path(item)
+  %h5
+    = link_to item.name, product_path(item)
+  .price-box
+    %p
+      %span= "Rs.#{item.price}"
+      %i.item_price= "Rs.#{get_price(item)}"
+      %span{style: "text-decoration:none; color: #999;"}="(#{item.discount}% off)"

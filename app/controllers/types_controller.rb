@@ -1,9 +1,8 @@
 class TypesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :verify_admin
-  
-  before_action :set_type, only: %w(edit update)
+  before_action :verify_admin 
+  before_action :set_type, only: %w(edit update destroy)
 
   def create
   	Type.create(types_params)
@@ -27,6 +26,13 @@ class TypesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+    end
+  end
+
+  def destroy
+    if @type.destroy
+      flash[:danger] = "Product Type successfully deleted"
+      redirect_to :back
     end
   end
 

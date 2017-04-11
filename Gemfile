@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'font-awesome-rails'
 gem 'bootstrap-select-rails'
 gem 'remotipart'
+gem 'will_paginate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

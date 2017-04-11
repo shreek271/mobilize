@@ -1,20 +1,25 @@
-#orderModal.modal.fade{role: "dialog"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", type: "button"} &times;
-        %h4.modal-title Place your order here...
-      .modal-body
-        = form_for(@order) do |f|
-          = f.hidden_field :product_id, value: @product.id, readonly: true
-          .form-group
-            = f.label :quantity
-            = f.number_field :quantity, class: "form-control"
-          .form-group
-            = f.label :address
-            = f.text_area :address, class: "form-control"
-          .form-group
-            = f.label :mobile_no, "Mobile"
-            = f.number_field :mobile_no, class: "form-control"
-          .form-group.actions
-            = f.submit "Submit", class: 'btn btn-sm btn-primary'
+= form_for(@order) do |f|
+  = render_errors(@order)
+  = f.hidden_field :product_id, value: (@order.product_id || @product.id), readonly: true
+  .row
+    .form-group.col-md-6
+      = f.label :area
+      = f.select(:area, ["BTM", "Jayanagar", "JP Nagar", "Banashankri","Kormangla", "Srinivas Nagar", "Hanummanta Nagar"], {}, {class: "selectpicker form-control"})
+    .form-group.col-md-6
+      = f.label :quantity
+      = f.number_field :quantity, class: "form-control", required: true
+  .form-group
+    = f.label :line_one, "Line 1"
+    = f.text_field :line_one, class: "form-control", required: true
+  .row
+    .form-group.col-md-6
+      = f.label :landmark
+      = f.text_field :landmark, class: "form-control", required: true
+    .form-group.col-md-6
+      = f.label :pin_code, "Pin Code"
+      = f.number_field :pin_code, class: "form-control", required: true
+  .form-group
+    = f.label :mobile_no, "Mobile"
+    = f.number_field :mobile_no, class: "form-control", required: true
+  .form-group.actions
+    = f.submit "Submit", class: 'btn btn-sm btn-success'

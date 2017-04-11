@@ -1,6 +1,6 @@
 .row.zero-margin
   %br
-  .col-md-6
+  .col-md-12
     -@brands.each do |brand|
       = link_to brand.name, brand_path(brand), class: 'btn selected-button'
 
@@ -16,31 +16,17 @@
         .tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{@types.first}"}
           .brand_tabs
             - @first_products.each do |item|
-              .col-md-3.brand-item-box
-                .image-wrapper
-                  = link_to image_tag(item.images.first.picture.url, class: "img-responsive", style: "height:250px; width:220px;"), product_path(item)
-                %h5
-                  = link_to item.name, product_path(item)
-                .price-box
-                  %p
-                    %span= "RS.#{item.price}"
-                    %i.item_price= "Rs.#{get_price(item)}" 
+              = render :partial => "products/product_box", locals: {item: item}
             .clearfix
         - @types.drop(1).each do |type|
           .tab-pane.fade{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type}"}
             .brand_tabs
               - @second_products.where('type_id = (?)', Type.find_by_name(type)).each do |item|
-                .col-md-3.brand-item-box
-                  .image-wrapper
-                    = image_tag item.images.first.picture.url, class: "img-responsive"
-                  %h5
-                    = link_to item.name, product_path(item)
-                  .price-box
-                    %p
-                      %span= item.price
-                      %i.item_price= "Rs.#{get_price(item)}"
+                = render :partial => "products/product_box", locals: {item: item}
               .clearfix
       :javascript
         $(document).ready(function(){
           $('.nav-tabs li:not(:first-child)').removeClass("active");
         })
+%br
+%br

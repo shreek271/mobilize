@@ -27,38 +27,25 @@
       = link_to image_tag(brand.logo.url(:thumb), class: 'img-circle', style: "width: 125px; height: 125px"), brand_path(brand)
 
 .clearfix
-.latest-arrivals
+.row.latest-arrivals
   %br
   %h2.home-h2
     Latest Arrivals
-  %br
-  .row.text-center.zero-margin
-    .col-md-3
-      .mobilize-card.thumbnail
-        = image_tag "mobile1.jpg", class: "img-responsive", style: "height: 175px"
-        %h5 OPPO
-        %h4 Rs 15000
-    .col-md-3
-      .mobilize-card.thumbnail
-        = image_tag "mobile2.png", class: "img-responsive", style: "height: 175px"
-        %h5 SAMSUNG
-        %h4 Rs 25000
-    .col-md-3
-      .mobilize-card.thumbnail
-        = image_tag "mobile3.jpg", class: "img-responsive", style: "height: 175px"
-        %h5 SONY
-        %h4 Rs 10000
+  .brand_tabs
+    - @latest.each do |item|
+      = render :partial => "products/product_box", locals: {item: item}
+    .clearfix
   %br
 
-:javascript
-$(document).ready(function(){
-  $("#flexiselDemo1").flexisel({
-    visibleItems: 3,
-        itemsToScroll: 1,         
-        autoPlay: {
-            enable: true,
-            interval: 5000,
-            pauseOnHover: true
-        }
-  });
-})
+/ :javascript
+/ $(document).ready(function(){
+/   $("#flexiselDemo1").flexisel({
+/     visibleItems: 3,
+/         itemsToScroll: 1,         
+/         autoPlay: {
+/             enable: true,
+/             interval: 5000,
+/             pauseOnHover: true
+/         }
+/   });
+/ })

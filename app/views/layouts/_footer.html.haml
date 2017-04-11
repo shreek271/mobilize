@@ -1,5 +1,30 @@
-%br
-= link_to image_tag('facebook.svg', class: 'img-circle', height: '45px', width: '45px')
-= link_to image_tag('twitter.svg', class: 'img-circle', height: '45px', width: '45px')
-= link_to image_tag('linkedin.svg', class: 'img-circle', height: '45px', width: '45px')
-%br
+.row.zero-margin.text-center
+  %br	
+  .col-md-4
+    = link_to (image_tag('facebook.svg', class: 'img-circle', height: '35px', width: '35px')), "https://www.facebook.com/mobilizezone", target: '_blank'
+    = link_to image_tag('twitter.svg', class: 'img-circle', height: '35px', width: '35px')
+    = link_to image_tag('linkedin.svg', class: 'img-circle', height: '35px', width: '35px')
+  .col-md-4
+    Developed and Maintained by: 
+    = link_to "shree.k271", "https://www.linkedin.com/in/shreenandan-kumar-b0515964/", target: "_blank"
+  .col-md-4
+    = link_to "feedback/suggestions", "#feedbackModal", "data-toggle" => "modal"
+
+#feedbackModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "feedback-formLabel", role: "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title
+          Feedback
+      .modal-body
+        %form{action: "opinion"}
+          .form-group
+            %label{for: "name"} Name
+            %input.form-control{name: "firstname", type: "text", placeholder: "Enter your name"}
+          .form-group
+            %label{for: "message"} *Feedback
+            %textarea.form-control{name: "description", placeholder: "Enter your feedback...", rows: "5", required: true }
+          %button.btn.btn-primary{type: "submit"} Submit

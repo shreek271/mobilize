@@ -1,8 +1,8 @@
 class BrandsController < ApplicationController
-  before_action :authenticate_user!, only: %w(edit update create)
-  before_action :verify_admin, only: %w(edit update create)
   
-  before_action :set_brand, only: %w(edit update show)
+  before_action :authenticate_user!, only: %w(edit update create destroy)
+  before_action :verify_admin, only: %w(edit update create destroy) 
+  before_action :set_brand, only: %w(edit update show destroy)
   
   def create
   	Brand.create(brands_params)
@@ -39,6 +39,13 @@ class BrandsController < ApplicationController
     @products = Product.all
     @first_products = @products.where(type_id: Type.find_by_name(@types.first))
     @second_products = @products.where('id not IN (?)', @first_products.pluck(:id))
+  end
+
+  def destroy
+    if @brand.destroy
+      flash[:success] = "Brand successfully deleted"
+      redirect_to :back
+    end
   end
 
   private

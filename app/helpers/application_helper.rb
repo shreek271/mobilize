@@ -25,4 +25,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def render_errors(object)
+    render "shared/error_messages", object: object
+  end
+
 end

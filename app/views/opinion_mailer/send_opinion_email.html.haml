@@ -1,0 +1,10 @@
+- name = @name.present? ? @name : "Anonymous"
+%div{:style => "border-bottom:1px solid rgba(158, 158, 158, 0.50);"}
+  %span{:style=> "color:#607D8B; font-size:18px; font-family: sans-serif; font-weight: bold;"}
+    Feedback
+%tr
+  %td.content{:style => "background: white; padding: 20px 10px; "}
+    %p.content-para{:style=> "font-size: 16px; font-weight: normal; margin-bottom: 20px; font-family:sans-serif;"}
+      I am #{name}, with an Opinion.
+    %p.content-para{:style=> "font-size: 16px; font-weight: normal; margin-bottom: 20px; font-family:sans-serif;"}
+      =@description
