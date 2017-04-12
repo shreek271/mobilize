@@ -17,5 +17,6 @@
 //= require bootstrap-sprockets
 //= require jqzoom
 //= require jquery.remotipart
-//= require jquery.flexisel
 //= require_tree .
+
+//jquery.flexisel

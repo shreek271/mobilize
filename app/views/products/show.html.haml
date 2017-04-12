@@ -10,6 +10,7 @@
   %br
   .col-md-5
     .bzoom_wrap.product-image
+      %br
       %ul#bzoom{data: {imageCount: @product.images.count}}
         - @product.images.each do |item|
           %li
@@ -18,7 +19,7 @@
   .col-md-7
     .product-details
       %br
-      %span.product-heading= @product.name.capitalize
+      %span.product-heading= @product.name
       .price-box
         %p
           %span= "Rs.#{@product.price}"
@@ -41,6 +42,7 @@
         .col-md-6
           - if current_user.present? && current_user.admin
             = link_to "edit", edit_product_path(@product), class: "btn btn-default w3ls-cart"
+            = link_to "delete", @product, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger pull-right'
           - else
             - modal = current_user.present? ? "#orderModal" : "#loginModal"
             = link_to "Buy now", modal, "data-toggle" => "modal", class: "btn btn-default form-control order-now-button"
@@ -80,9 +82,9 @@
 $(document).ready(function(){
   $("#bzoom").zoom({
     small_thumbs: $("#bzoom").data("imagecount"),
-    zoom_area_width: 400,
+    zoom_area_width: 350,
     thumb_image_width: 275,  
-    thumb_image_height: 325
+    thumb_image_height: 350
   });
 })
   

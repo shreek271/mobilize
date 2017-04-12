@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   
-  before_action :authenticate_user!, only: %w(edit update create)
-  before_action :verify_admin, only: %w(edit update create)
-  before_action :set_product, only: %w(edit update show)
+  before_action :authenticate_user!, only: %w(edit update create destroy)
+  before_action :verify_admin, only: %w(edit update create destroy)
+  before_action :set_product, only: %w(edit update show destroy)
 
   def create
     @product = Product.create(products_params)
@@ -29,7 +29,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    if @product.destroy
+      flash[:success] = "Brand successfully deleted"
+      redirect_to @product.brand
+    end
   end
 
   private
@@ -39,7 +43,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id]||params[:product_id])
   end
 
 end

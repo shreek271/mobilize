@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   	@order = Order.create(orders_params)
     @order.user_id = current_user.id
   	if @order.save
-      OrderMailer.send_new_order_email(@order)
+      OrderMailer.send_new_order_email(@order).deliver_now
   	  flash[:success] = "Successfully placed the order."
       redirect_to @order
     else
