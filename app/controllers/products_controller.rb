@@ -21,6 +21,11 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update_attributes(products_params)
+      if params[:product][:picture].present? 
+        params[:product][:picture].each do |picture|      
+          @product.images.create(:picture=> picture)
+        end
+      end
       flash[:success] = "Successfully updated the product."
       redirect_to @product
     else
