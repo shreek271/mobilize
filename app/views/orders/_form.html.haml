@@ -7,7 +7,7 @@
       = f.select(:area, ["BTM", "Jayanagar", "JP Nagar", "Banashankri","Kormangla", "Srinivas Nagar", "Hanummanta Nagar"], {}, {class: "selectpicker form-control"})
     .form-group.col-md-6
       = f.label :quantity
-      = f.number_field :quantity, class: "form-control", required: true
+      = f.number_field :quantity, value: 1, class: "form-control", required: true, min: 1, max: 5
   .form-group
     = f.label :line_one, "Line 1"
     = f.text_field :line_one, class: "form-control", required: true

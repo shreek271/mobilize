@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :images
   end
   resources :brands
+  resources :users
   resources :types
   resources :orders do
     patch :update_status

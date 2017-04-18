@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: %w(edit update show update_status)
 
+  def new
+    redirect_to :root
+  end
+
   def create
   	@order = Order.create(orders_params)
     @order.user_id = current_user.id
