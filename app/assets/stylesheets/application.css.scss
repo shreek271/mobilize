@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap-select
+ *= require jquery.datetimepicker
  *= require_tree .
  *= require_self
  */
@@ -24,6 +25,7 @@ html, body {
 
 body{
   padding-top: 50px;
+  font-family: 'Glegoo', 'serif';
 }
 
 .text-undeline{

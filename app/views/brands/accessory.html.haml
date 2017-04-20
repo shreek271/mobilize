@@ -1,0 +1,20 @@
+-if @brand.present?
+  .row.zero-margin{style: "background-color:mintcream"}
+    %br
+    .col-md-12
+      - @brands.each do |brand|
+        - magic_class = brand == @brand ? 'btn selected-button' : 'btn btn-default'
+        = link_to brand.name.upcase, accessories_path(brand_id: brand.id), class: "#{magic_class} mybutton"
+      = link_to 'ALL', accessories_path(accessory: true), class: 'btn btn-default mybutton'
+      = link_to 'Mobiles ??', brands_path, method: :get, class: "btn btn-default pull-right"
+      %hr
+    = render "brands/mini_show"
+-else
+  .row.zero-margin{style: "background-color:mintcream"}
+    %br
+    .col-md-12
+      -@brands.each do |brand|
+        = link_to brand.name, accessories_path(brand_id: brand.id), class: 'btn selected-button'
+      = link_to 'Mobiles ??', brands_path, method: :get, class: "btn btn-default pull-right"
+      %hr
+    = render 'brands/mini_index'

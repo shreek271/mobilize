@@ -1,0 +1,23 @@
+.offer-page
+  .transparent-background
+    .col-md-4
+    .col-md-4
+      %br
+      %br
+      .panel.panel-default
+        .panel-heading.text-center
+          %h4
+            = @offer.new_record? ? "Create Offers" : "Edit Offer"
+        .panel-body
+          = form_for(@offer, html: { role: "form" }) do |f|
+            .form-group
+              = f.label :from_time
+              = f.text_field :from_time, placeholder:  'Select Date', class: "form-control datetimepicker"
+            .form-group
+              = f.label :to_time
+              = f.text_field :to_time, placeholder:  'Select Date', class: "form-control datetimepicker"
+            .form-group
+              = f.label :product
+              = f.collection_select(:product_id, Product.all, :id, :name, {}, {class: "selectpicker form-control"})
+            %br
+            = f.submit "Submit", class: "btn btn-success"

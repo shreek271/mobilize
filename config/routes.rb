@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :images
   end
+  resources :offers
   resources :brands
   resources :users
   resources :types
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   end
   
   get 'home' => 'static_pages#home'
+  get 'accessories' => "brands#accessory"
   get 'dashboard' => 'dashboard#show'
   get 'opinion' => "static_pages#opinion"
   root to: "static_pages#home"

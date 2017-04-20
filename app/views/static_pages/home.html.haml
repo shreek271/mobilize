@@ -22,7 +22,6 @@
   - @brands.each do |brand|
     .col-md-2.text-center
       = link_to image_tag(brand.logo.url(:thumb), class: 'img-circle', style: "width: 125px; height: 125px"), brand_path(brand)
-
 .clearfix
 .row.latest-arrivals
   %br
@@ -33,3 +32,34 @@
       = render :partial => "products/product_box", locals: {item: item}
     .clearfix
   %br
+- if @offer_count >= 1
+  .banner-offer
+    .banner-offer-grids
+      .col-md-7.banner-offer-grid-left
+        %h3
+          Grand Opening Event With flat
+          %span
+            20%
+            %i Discount
+        = link_to "Shop Now", offers_path
+      .col-md-5.banner-offer-grid-right
+        %h4 super deals
+        .timer_wrap
+          #counter
+    .clearfix
+
+:javascript
+  $(document).ready(function(){
+    $('#counter').countdown({
+      timestamp : (new Date()).getTime() + 11*24*60*60*1000
+    });
+    /* ---- Animations ---- */
+    $('#links a').hover(
+      function(){ $(this).animate({ left: 3 }, 'fast'); },
+      function(){ $(this).animate({ left: 0 }, 'fast'); }
+    );
+    $('footer a').hover(
+      function(){ $(this).animate({ top: 3 }, 'fast'); },
+      function(){ $(this).animate({ top: 0 }, 'fast'); }
+    );
+  })

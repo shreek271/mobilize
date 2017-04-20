@@ -15,8 +15,14 @@
 //= require turbolinks
 //= require bootstrap-select
 //= require bootstrap-sprockets
+//= require jquery.datetimepicker
 //= require jqzoom
+//= require jquery.countdown
 //= require jquery.remotipart
 //= require_tree .
 
 //jquery.flexisel
+
+$(document).ready(function(){
+  $('.datetimepicker').datetimepicker();
+});

@@ -7,7 +7,7 @@ class BrandsController < ApplicationController
   def create
   	Brand.create(brands_params)
   	@brand = Brand.new
-  	@brands = Brand.all
+  	@brands = Type.first.brands.distinct
   	respond_to do |format|
   	  format.html
       format.js
@@ -30,15 +30,29 @@ class BrandsController < ApplicationController
   end
 
   def show
-    @brands = Brand.all
+    @brands = Type.first.brands.distinct
   end
 
   def index
-    @brands = Brand.all
+    @brands = Type.first.brands
     @types = @brands.joins(:types).pluck('types.name').uniq
     @products = Product.all
     @first_products = @products.where(type_id: Type.find_by_name(@types.first))
     @second_products = @products.where('id not IN (?)', @first_products.pluck(:id))
+    @brands = @brands.distinct
+  end
+
+  def accessory
+    brands = Type.first.brands.distinct
+    @brands = Brand.all - brands
+    if params[:accessory]
+      @types = Brand.joins(:types).where("brands.id IN (?)", @brands.pluck(:id)).pluck('types.name').uniq
+      @products = Product.all
+      @first_products = @products.where(type_id: Type.find_by_name(@types.first))
+      @second_products = @products.where('id not IN (?)', @first_products.pluck(:id))
+    else
+      @brand = Brand.find(params[:brand_id])
+    end
   end
 
   def destroy

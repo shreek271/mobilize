@@ -1,8 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def home
-  	@brands = Brand.all
+  	@brands = Type.first.brands.distinct
   	@latest = Product.where(latest: true)
+    @offer_count = Offer.count
   end
 
   def opinion

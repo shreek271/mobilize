@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @brands = Brand.all
+    @brands = Type.first.brands.distinct
     @order = Order.new
   end
 

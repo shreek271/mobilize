@@ -1,4 +1,4 @@
-.row.zero-margin
+.row.zero-margin{style: "background-color:mintcream"}
   %br
   .col-md-12
     /%span#brand-name= @brand.name
@@ -6,33 +6,6 @@
       - magic_class = brand == @brand ? 'btn selected-button' : 'btn btn-default'
       = link_to brand.name.upcase, brand_path(brand), class: "#{magic_class} mybutton"
     = link_to 'ALL', brands_path, class: 'btn btn-default mybutton'
-%br
-.row.zero-margin
-  .product-items-tab
-    .bs-example.bs-example-tabs{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
-      - if @brand.types.present?
-        %ul#myTab.nav.nav-tabs{:role => "tablist"}
-          - @brand.types.distinct.each do |type|
-            %li.active{:role => "presentation"}
-              %a#home-tab{"aria-controls" => "home", "data-toggle" => "tab", :href => "##{type.name}", :role => "tab"}= type.name
-        #myTabContent.tab-content
-          - type1 =  @brand.types.first
-          .tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type1.name}"}
-            .brand_tabs
-              - @brand.products.where("type_id = (?)", type1.id).each do |item|
-                = render :partial => "products/product_box", locals: {item: item}   
-              .clearfix
-          - @brand.types.distinct.drop(1).each do |type|
-            .tab-pane.fade{"aria-labelledby" => "home-tab", :role => "tabpanel", id: "#{type.name}"}
-              .brand_tabs
-                - @brand.products.where("type_id = (?)", type.id).each do |item|
-                  = render :partial => "products/product_box", locals: {item: item}
-                .clearfix
-        :javascript
-          $(document).ready(function(){
-            $('.nav-tabs li:not(:first-child)').removeClass("active");
-          })
-      - else
-        oops
-%br
-%br
+    = link_to 'Accessories ??', accessories_path(accessory: true), method: :get, class: "btn btn-default pull-right"
+    %hr
+  = render "brands/mini_show"

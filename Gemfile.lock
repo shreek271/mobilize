@@ -99,6 +99,7 @@ GEM
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jquery-datetimepicker-rails (2.4.1.0)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -230,6 +231,7 @@ DEPENDENCIES
   font-awesome-rails
   haml
   jbuilder (~> 2.5)
+  jquery-datetimepicker-rails
   jquery-rails
   letter_opener
   listen (~> 3.0.5)

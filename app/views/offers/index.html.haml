@@ -1,0 +1,9 @@
+.row.zero-margin{style: "background-color:mintcream"}
+  %br
+  .col-md-12
+    %span{style: "font-weight: 600; font-sze: 16px;"} Exclusive Offers
+    = link_to 'Mobiles ??', brands_path, method: :get, class: "btn btn-default pull-right"   
+    = link_to 'Accessories ??', accessories_path(accessory: true), method: :get, class: "btn btn-default pull-right"
+    %hr
+    - @offers.each do |item|
+      = render :partial => "products/product_box", locals: {item: item}

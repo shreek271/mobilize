@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'font-awesome-rails'
 gem 'bootstrap-select-rails'
+gem 'jquery-datetimepicker-rails'
 gem 'remotipart'
 gem 'will_paginate'
 # Use Capistrano for deployment
